@@ -1,0 +1,202 @@
+﻿import type { Lang } from '@/types';
+
+const translations = {
+  en: {
+    nav: {
+      home: 'Home', shop: 'Shop', combos: 'Combos', offers: 'Offers',
+      cart: 'Cart', about: 'About', contact: 'Contact',
+    },
+    hero: {
+      pill:       'Traditionally Grown, Naturally Pure',
+      brandMain:  'Parambariyam',
+      brandSub:   'Organics',
+      headline:   'Pure from the Soil,\nPure for Your Soul',
+      subtext:    'Traditional organic foods grown with love — delivered to your door.',
+      shopBtn:    'Shop Products',
+      combosBtn:  'View Combos',
+      badge1: '100% Organic', badge2: 'No Preservatives', badge3: 'Order on WhatsApp',
+    },
+    shop: {
+      title: 'Our Products', allCategories: 'All Categories',
+      outOfStock: 'Out of Stock', addToCart: 'Add to Cart',
+      inStock: 'in stock', filterBy: 'Filter by category',
+      noProducts: 'No products found.', bestseller: 'Bestseller',
+    },
+    product: {
+      contains: 'Contains / Ingredients', back: '← Back to Shop',
+      mrp: 'MRP', offer: 'Offer', endsIn: 'Offer ends in', stockLeft: 'left in stock',
+    },
+    combos: {
+      title: 'Combo Deals', subtitle: 'Curated bundles at special prices',
+      includes: 'Includes', addToCart: 'Add Combo to Cart', noCombos: 'No combos available right now.',
+    },
+    offers: {
+      title: 'Limited-Time Offers', subtitle: 'Grab these deals before they expire',
+      endsIn: 'Ends in', expired: 'Offer Expired', noOffers: 'No active offers right now.',
+    },
+    cart: {
+      title: 'Your Cart', empty: 'Your cart is empty.',
+      continueShopping: 'Continue Shopping', qty: 'Qty',
+      subtotal: 'Subtotal', total: 'Total', checkout: 'Order via WhatsApp', remove: 'Remove',
+    },
+    about: {
+      title: 'About Parambariyam Organics',
+      p1: "We are a family-run organic farm rooted in Tamil Nadu's ancient agricultural traditions. Every grain, spice, and oil we sell is grown without chemicals and processed the traditional way.",
+      p2: '"Parambariyam" means "heritage." We believe the best food comes from seeds passed down through generations, soils nurtured with care, and knowledge preserved across time.',
+      p3: "When you buy from us, you support small farmers, protect heirloom crops, and bring genuinely wholesome food to your family's table.",
+      trustNumber: '15+',
+      trustLabel:  'Years of Heritage Farming',
+      features: [
+        { icon: 'leaf',    title: '100% Organic',      desc: 'Zero synthetic chemicals, ever.'             },
+        { icon: 'users',   title: 'Support Farmers',   desc: 'Direct from 50+ small family farms.'        },
+        { icon: 'heart',   title: 'Health First',      desc: 'Nutrient-dense, traditional varieties.'     },
+        { icon: 'recycle', title: 'Sustainable',       desc: 'Eco-packaging, regenerative methods.'       },
+      ],
+    },
+    contact: {
+      title: 'Contact Us',
+      addressLabel: 'Address', phoneLabel: 'Phone',
+      emailLabel: 'Email',    whatsappBtn: 'Chat on WhatsApp', socialLabel: 'Follow Us',
+      visitUs: 'Visit Us', callUs: 'Call Us', emailUs: 'Email Us', hours: 'Business Hours',
+      hoursValue: '[Mon–Sat, 9 AM – 6 PM — fill in later]',
+      formTitle: 'Send a Message',
+      nameLabel: 'Your Name', emailFieldLabel: 'Email Address',
+      phoneFieldLabel: 'Phone Number', messageLabel: 'Message',
+      sendBtn: 'Send via WhatsApp', sendMailBtn: 'Send via Email',
+      namePlaceholder: 'Your name', emailPlaceholder: 'your@email.com',
+      phonePlaceholder: '+91 98765 43210', messagePlaceholder: "Hi, I'd like to ask about…",
+    },
+    footer: {
+      tagline: 'Bringing traditional organic goodness to your doorstep.',
+      address: '[Address — fill in later]', phone: '[Phone — fill in later]',
+      email: '[Email — fill in later]', instagram: 'Instagram', facebook: 'Facebook',
+      deliveryNote: '[Delivery & payment info — fill in later]', rights: 'All rights reserved.',
+      colProducts: 'Products', colCompany: 'Company', colSupport: 'Support',
+      faq: '[FAQ — coming soon]', returns: '[Returns — coming soon]',
+      privacy: '[Privacy Policy — coming soon]',
+    },
+    admin: {
+      title: 'Admin Panel',
+      demoMode: '⚠️ Demo Mode — data is stored locally in this browser. Connect Supabase to enable persistence.',
+      dashboard: 'Dashboard', categories: 'Categories', products: 'Products',
+      combos: 'Combos', offers: 'Offers', logout: 'Logout',
+      checkoutCount: 'WhatsApp Checkout Clicks',
+      save: 'Save', cancel: 'Cancel', delete: 'Delete', edit: 'Edit', addNew: 'Add New',
+      nameTa: 'Name (Tamil)', nameEn: 'Name (English)',
+      descTa: 'Description (Tamil)', descEn: 'Description (English)',
+      containsTa: 'Contains / Ingredients (Tamil)', containsEn: 'Contains / Ingredients (English)',
+      weight: 'Weight / Size (e.g. 500 g, 1 kg, 250 ml)',
+      mrp: 'MRP (₹)', offerPrice: 'Offer Price (₹) — leave blank for none',
+      stock: 'Stock (units)', category: 'Category', imageUrl: 'Image URL',
+      offerEnds: 'Offer Ends At (date & time)',
+      isBestseller: 'Mark as Bestseller / Popular',
+      comboProducts: 'Products in Combo (select multiple)', comboPrice: 'Combo Price (₹)',
+      login: 'Admin Login', loginBtn: 'Login', email: 'Email', password: 'Password',
+      loginError: 'Invalid credentials.', slug: 'Slug (URL-safe, auto-filled)',
+    },
+  },
+
+  ta: {
+    nav: {
+      home: 'முகப்பு', shop: 'கடை', combos: 'தொகுப்புகள்', offers: 'சலுகைகள்',
+      cart: 'கார்ட்', about: 'எங்களைப் பற்றி', contact: 'தொடர்பு',
+    },
+    hero: {
+      pill:       'பாரம்பரிய முறையில் வளர்க்கப்பட்டது, இயற்கையாக தூய்மையானது',
+      brandMain:  'பாரம்பரியம்',
+      brandSub:   'ஆர்கானிக்ஸ்',
+      headline:   'மண்ணிலிருந்து தூய்மை,\nஉள்ளத்திற்கு நலம்',
+      subtext:    'அன்போடு வளர்க்கப்பட்ட பாரம்பரிய இயற்கை உணவுகள் — உங்கள் வீட்டு வாசலுக்கு.',
+      shopBtn:    'தயாரிப்புகள் பாருங்கள்',
+      combosBtn:  'தொகுப்புகள் பாருங்கள்',
+      badge1: '100% இயற்கை', badge2: 'பதப்படுத்திகள் இல்லை', badge3: 'WhatsApp-ல் ஆர்டர்',
+    },
+    shop: {
+      title: 'எங்கள் தயாரிப்புகள்', allCategories: 'அனைத்து வகைகளும்',
+      outOfStock: 'கையிருப்பு இல்லை', addToCart: 'கார்ட்டில் சேர்',
+      inStock: 'கையிருப்பில் உள்ளது', filterBy: 'வகை வாரியாக தேர்வு செய்யுங்கள்',
+      noProducts: 'தயாரிப்புகள் எதுவும் இல்லை.', bestseller: 'அதிக விற்பனை',
+    },
+    product: {
+      contains: 'பொருட்கள் / சேர்க்கைகள்', back: '← கடைக்கு திரும்பு',
+      mrp: 'விலை', offer: 'சலுகை விலை', endsIn: 'சலுகை முடிவடைகிறது', stockLeft: 'கையிருப்பில் உள்ளது',
+    },
+    combos: {
+      title: 'தொகுப்பு சலுகைகள்', subtitle: 'சிறப்பு விலையில் தேர்ந்தெடுக்கப்பட்ட தொகுப்புகள்',
+      includes: 'உள்ளடக்கியவை', addToCart: 'தொகுப்பை கார்ட்டில் சேர்', noCombos: 'தற்போது தொகுப்புகள் இல்லை.',
+    },
+    offers: {
+      title: 'குறுகிய கால சலுகைகள்', subtitle: 'காலக்கெடுவிற்கு முன் பெற்றுக்கொள்ளுங்கள்',
+      endsIn: 'முடிவடைகிறது', expired: 'சலுகை முடிந்தது', noOffers: 'தற்போது சலுகைகள் இல்லை.',
+    },
+    cart: {
+      title: 'உங்கள் கார்ட்', empty: 'கார்ட் காலியாக உள்ளது.',
+      continueShopping: 'கடையை தொடருங்கள்', qty: 'எண்ணிக்கை',
+      subtotal: 'துணை மொத்தம்', total: 'மொத்தம்', checkout: 'WhatsApp-ல் ஆர்டர் செய்யுங்கள்', remove: 'நீக்கு',
+    },
+    about: {
+      title: 'பாரம்பரியம் ஆர்கானிக்ஸ் பற்றி',
+      p1: 'நாங்கள் தமிழ்நாட்டின் பண்டைய வேளாண்மை மரபில் வேர்பூண்ட ஒரு குடும்ப பண்ணை. நாங்கள் விற்கும் ஒவ்வொரு தானியமும், மசாலாவும், எண்ணெயும் இரசாயனங்கள் இல்லாமல் வளர்க்கப்பட்டு பாரம்பரிய முறையில் செயலாக்கப்படுகின்றன.',
+      p2: '"பாரம்பரியம்" என்றால் "மரபு." தலைமுறை தலைமுறையாக கடத்தப்பட்ட விதைகளிலிருந்தும், அன்போடு பரிபாலிக்கப்பட்ட நிலங்களிலிருந்தும் வரும் உணவே சிறந்தது என்று நாங்கள் நம்புகிறோம்.',
+      p3: 'நீங்கள் எங்களிடம் வாங்கும்போது, சிறு விவசாயிகளை ஆதரிக்கிறீர்கள், பாரம்பரிய விதை வகைகளைப் பாதுகாக்கிறீர்கள்.',
+      trustNumber: '15+',
+      trustLabel:  'ஆண்டுகள் பாரம்பரிய வேளாண்மை',
+      features: [
+        { icon: 'leaf',    title: '100% இயற்கை',       desc: 'எந்த செயற்கை இரசாயனங்களும் இல்லை.'    },
+        { icon: 'users',   title: 'விவசாயிகளை ஆதரி',  desc: '50+ சிறு குடும்ப பண்ணைகளிலிருந்து நேரடியாக.' },
+        { icon: 'heart',   title: 'ஆரோக்கியம் முதல்', desc: 'சத்து நிறைந்த பாரம்பரிய வகைகள்.'       },
+        { icon: 'recycle', title: 'நிலையான விவசாயம்',  desc: 'சுற்றுச்சூழல் பொருட்கள், புதுப்பிக்கும் முறைகள்.' },
+      ],
+    },
+    contact: {
+      title: 'தொடர்பு கொள்ளுங்கள்',
+      addressLabel: 'முகவரி', phoneLabel: 'தொலைபேசி',
+      emailLabel: 'மின்னஞ்சல்', whatsappBtn: 'WhatsApp-ல் பேசுங்கள்', socialLabel: 'எங்களை பின்தொடருங்கள்',
+      visitUs: 'எங்களை சந்தியுங்கள்', callUs: 'அழையுங்கள்', emailUs: 'மின்னஞ்சல் அனுப்புங்கள்', hours: 'வணிக நேரம்',
+      hoursValue: '[திங்கள்–சனி, காலை 9 – மாலை 6 — பிறகு நிரப்பவும்]',
+      formTitle: 'செய்தி அனுப்புங்கள்',
+      nameLabel: 'உங்கள் பெயர்', emailFieldLabel: 'மின்னஞ்சல் முகவரி',
+      phoneFieldLabel: 'தொலைபேசி எண்', messageLabel: 'செய்தி',
+      sendBtn: 'WhatsApp-ல் அனுப்பு', sendMailBtn: 'மின்னஞ்சல் அனுப்பு',
+      namePlaceholder: 'உங்கள் பெயர்', emailPlaceholder: 'your@email.com',
+      phonePlaceholder: '+91 98765 43210', messagePlaceholder: 'வணக்கம், நான் கேட்க விரும்புகிறேன்…',
+    },
+    footer: {
+      tagline: 'பாரம்பரிய இயற்கை நன்மைகளை உங்கள் வீட்டு வாசலுக்கு கொண்டு வருகிறோம்.',
+      address: '[முகவரி — பிறகு நிரப்பவும்]', phone: '[தொலைபேசி — பிறகு நிரப்பவும்]',
+      email: '[மின்னஞ்சல் — பிறகு நிரப்பவும்]', instagram: 'இன்ஸ்டாகிராம்', facebook: 'ஃபேஸ்புக்',
+      deliveryNote: '[டெலிவரி & பணம் செலுத்துதல் தகவல் — பிறகு நிரப்பவும்]', rights: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',
+      colProducts: 'தயாரிப்புகள்', colCompany: 'நிறுவனம்', colSupport: 'ஆதரவு',
+      faq: '[அடிக்கடி கேட்கப்படும் கேள்விகள் — விரைவில்]',
+      returns: '[திரும்பளிப்பு கொள்கை — விரைவில்]',
+      privacy: '[தனியுரிமைக் கொள்கை — விரைவில்]',
+    },
+    admin: {
+      title: 'நிர்வாக பலகம்',
+      demoMode: '⚠️ டெமோ பயன்முறை — தரவு இந்த உலாவியில் உள்நாட்டில் சேமிக்கப்படுகிறது.',
+      dashboard: 'டாஷ்போர்ட்', categories: 'வகைகள்', products: 'தயாரிப்புகள்',
+      combos: 'தொகுப்புகள்', offers: 'சலுகைகள்', logout: 'வெளியேறு',
+      checkoutCount: 'WhatsApp செக்அவுட் கிளிக்குகள்',
+      save: 'சேமி', cancel: 'ரத்து செய்', delete: 'நீக்கு', edit: 'திருத்து', addNew: 'புதிதாக சேர்',
+      nameTa: 'பெயர் (தமிழ்)', nameEn: 'பெயர் (ஆங்கிலம்)',
+      descTa: 'விவரம் (தமிழ்)', descEn: 'விவரம் (ஆங்கிலம்)',
+      containsTa: 'சேர்க்கைகள் (தமிழ்)', containsEn: 'சேர்க்கைகள் (ஆங்கிலம்)',
+      weight: 'எடை / அளவு (எ.கா. 500 கி, 1 கிலோ, 250 மி.லி)',
+      mrp: 'விலை (₹)', offerPrice: 'சலுகை விலை (₹) — இல்லை எனில் காலியாக விடுங்கள்',
+      stock: 'கையிருப்பு (அலகு)', category: 'வகை', imageUrl: 'படம் URL',
+      offerEnds: 'சலுகை முடிவு நேரம்',
+      isBestseller: 'அதிக விற்பனை / பிரபலமானது என குறிக்கவும்',
+      comboProducts: 'தொகுப்பில் உள்ள தயாரிப்புகள்', comboPrice: 'தொகுப்பு விலை (₹)',
+      login: 'நிர்வாக உள்நுழைவு', loginBtn: 'உள்நுழைக', email: 'மின்னஞ்சல்', password: 'கடவுச்சொல்',
+      loginError: 'தவறான நற்சான்றிதழ்கள்.', slug: 'Slug (URL)',
+    },
+  },
+} as const;
+
+export type Translations = typeof translations.en;
+
+export function t(lang: Lang): Translations {
+  return translations[lang] as unknown as Translations;
+}
+
+export default translations;
