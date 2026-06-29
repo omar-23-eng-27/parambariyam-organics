@@ -71,7 +71,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-forest text-white/70 mt-24">
+    <footer className="mt-24 bg-[#1a5c30] text-white/70">
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
         {/* Brand column — spans 2 cols on large screens */}
@@ -82,11 +82,11 @@ export default function Footer() {
             </div>
             <div>
               <p className="font-serif text-white text-base leading-tight">{SITE_NAME[lang]}</p>
-              <p className="text-white/40 text-xs mt-0.5">நலமது வாழ்க்கை முறை</p>
+              <p className="text-white/50 text-xs mt-0.5">நலமது வாழ்க்கை முறை</p>
             </div>
           </div>
-          <p className="text-sm leading-relaxed text-white/55 max-w-xs">{tr.tagline}</p>
-          <p className="text-xs text-white/30 leading-relaxed border-t border-white/10 pt-4 max-w-xs">
+          <p className="text-sm leading-relaxed text-white/65 max-w-xs">{tr.tagline}</p>
+          <p className="text-xs text-white/40 leading-relaxed border-t border-white/10 pt-4 max-w-xs">
             {tr.deliveryNote}
           </p>
 
@@ -95,8 +95,8 @@ export default function Footer() {
             {socials.map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center
-                  text-white/50 hover:text-white hover:border-white/40 transition-colors cursor-pointer">
+                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center
+                  text-white hover:bg-white/20 transition-colors cursor-pointer">
                 {s.icon}
               </a>
             ))}
@@ -104,12 +104,12 @@ export default function Footer() {
 
           {/* WhatsApp chat pill */}
           <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full
-              pl-4 pr-3 py-2 hover:border-white/30 transition-colors group cursor-pointer">
-            <span className="text-xs text-white/60 group-hover:text-white/90 transition-colors">
+            className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full
+              pl-4 pr-3 py-2 hover:border-white/35 hover:bg-white/15 transition-all group cursor-pointer">
+            <span className="text-xs text-white/70 group-hover:text-white transition-colors">
               {lang === 'en' ? 'Chat on WhatsApp' : 'WhatsApp-ல் பேசுங்கள்'}
             </span>
-            <span className="bg-green-600/30 group-hover:bg-green-600/50 rounded-full p-1.5 transition-colors text-green-400">
+            <span className="bg-green-400/25 group-hover:bg-green-400/40 rounded-full p-1.5 transition-colors text-green-300">
               <WhatsAppIcon />
             </span>
           </a>
@@ -118,12 +118,12 @@ export default function Footer() {
         {/* Link groups */}
         {linkGroups.map((group) => (
           <div key={group.heading} className="space-y-4">
-            <h4 className="text-white font-semibold text-xs uppercase tracking-widest">{group.heading}</h4>
+            <h4 className="text-[#d4a017] font-semibold text-sm tracking-wide">{group.heading}</h4>
             <ul className="space-y-2.5">
               {group.links.map((l) => (
                 <li key={l.label}>
                   <Link href={l.href}
-                    className="text-sm text-white/50 hover:text-white transition-colors cursor-pointer">
+                    className="text-sm text-white/80 hover:text-white transition-colors cursor-pointer">
                     {l.label}
                   </Link>
                 </li>
@@ -134,11 +134,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/8 px-6 py-5 max-w-7xl mx-auto
-        flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/25">
+      <div className="border-t border-white/10 px-6 py-5 max-w-7xl mx-auto
+        flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30">
         <span>© {new Date().getFullYear()} {SITE_NAME[lang]}. {tr.rights}</span>
         <div className="flex gap-4">
-          <span className="text-white/20">
+          <span className="text-white/25">
             {lang === 'en' ? '🌿 100% Organic Certified' : '🌿 100% இயற்கை சான்றிதழ்'}
           </span>
         </div>

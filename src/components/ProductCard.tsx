@@ -34,59 +34,72 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="card-lift bg-white rounded-2xl overflow-hidden border border-lime/20 flex flex-col h-full">
-      {/* Image — fixed height */}
+    <div className="group bg-white rounded-2xl overflow-hidden border border-lime/15
+      shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]
+      hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+
+      {/* Image — fixed height, image zooms on hover */}
       <Link href={`/shop/${product.id}`} className="block relative h-48 bg-cream overflow-hidden shrink-0">
         <Image
           src={product.image} alt={product.name[lang]} fill
-          className="object-cover hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width:768px) 100vw, 33vw"
         />
 
+        {/* Gradient overlay at bottom of image for badge readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
         {/* Category badge — top-left */}
         {category && (
-          <span className="absolute top-2 left-2 bg-forest/80 backdrop-blur-sm text-white
-            text-[10px] font-semibold px-2 py-0.5 rounded-full">
+          <span className="absolute top-2.5 left-2.5 bg-forest/85 backdrop-blur-sm text-white
+            text-[10px] font-semibold px-2.5 py-1 rounded-full tracking-wide shadow-sm">
             {category.name[lang]}
           </span>
         )}
 
         {/* SALE badge — top-right */}
         {offerActive && (
-          <span className="absolute top-2 right-2 bg-lime text-forest text-[10px] font-bold px-2 py-0.5 rounded-full">
+          <span className="absolute top-2.5 right-2.5 bg-lime text-forest text-[10px] font-bold
+            px-2.5 py-1 rounded-full tracking-wide shadow-sm">
             SALE
           </span>
         )}
 
         {/* Bestseller badge — top-right (only if no sale) */}
         {product.isBestseller && !offerActive && (
-          <span className="absolute top-2 right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-            ⭐ {tr.bestseller}
+          <span className="absolute top-2.5 right-2.5 bg-amber-500 text-white text-[10px] font-bold
+            px-2.5 py-1 rounded-full tracking-wide shadow-sm">
+            ★ {tr.bestseller}
           </span>
         )}
 
         {/* Out of stock overlay */}
         {outOfStock && (
-          <div className="absolute inset-0 bg-black/45 flex items-center justify-center">
-            <span className="text-white font-semibold text-sm bg-black/60 px-3 py-1 rounded-full">
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <span className="text-white font-semibold text-sm bg-black/70 px-4 py-1.5 rounded-full tracking-wide">
               {tr.outOfStock}
             </span>
           </div>
         )}
       </Link>
 
-      {/* Body — flex column, grows to fill card height */}
+      {/* Body */}
       <div className="p-4 flex flex-col flex-1">
 
-        {/* Name — fixed 2-line height so all cards reserve the same space */}
-        <Link href={`/shop/${product.id}`} className="block mb-2">
+        {/* Name — 2-line reserved height */}
+        <Link href={`/shop/${product.id}`} className="block mb-1.5">
           <h3 className="font-serif text-forest font-semibold text-base leading-snug
-            hover:text-leaf transition-colors line-clamp-2 min-h-[2.75rem]">
+            group-hover:text-leaf transition-colors line-clamp-2 min-h-[2.75rem]">
             {product.name[lang]}
           </h3>
         </Link>
 
-        {/* Price row — always one line */}
+        {/* Short description — fills empty space, 1 line, muted */}
+        <p className="text-xs text-gray-400 leading-relaxed line-clamp-1 mb-2">
+          {product.description[lang]}
+        </p>
+
+        {/* Price row */}
         <div className="flex items-baseline gap-2 flex-wrap mb-1">
           <span className="text-leaf font-bold text-lg">₹{price}</span>
           {offerActive && (
@@ -97,7 +110,7 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
-        {/* Offer / low-stock zone — fixed height so all cards align below it */}
+        {/* Offer / low-stock zone — fixed height */}
         <div className="h-6 mb-1 flex items-center">
           {offerActive && product.offerEndsAt ? (
             <div className="flex items-center gap-1 text-xs text-gray-500">
@@ -105,8 +118,8 @@ export default function ProductCard({ product }: { product: Product }) {
               <CountdownTimer endsAt={product.offerEndsAt} expiredLabel={t(lang).offers.expired} />
             </div>
           ) : (!outOfStock && product.stock <= 10) ? (
-            <p className="text-xs text-orange-600 font-medium">
-              {product.stock} {ptr.stockLeft}
+            <p className="text-xs text-orange-500 font-medium">
+              Only {product.stock} {ptr.stockLeft}
             </p>
           ) : null}
         </div>

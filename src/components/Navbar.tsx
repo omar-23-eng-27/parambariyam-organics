@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useLang } from '@/context/LanguageContext';
 import { useCart } from '@/context/CartContext';
 import { t } from '@/lib/translations';
@@ -12,8 +13,14 @@ export default function Navbar() {
   const { lang, toggle } = useLang();
   const { count } = useCart();
   const tr = t(lang).nav;
-  const [open, setOpen]       = useState(false);
+  const pathname = usePathname();
+  const [open, setOpen]         = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // On non-hero pages (anything except home) always use the solid style
+  const heroPages = ['/'];
+  const alwaysSolid = !heroPages.includes(pathname);
+  const solid = alwaysSolid || scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -34,7 +41,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
+        solid
           ? 'bg-[#F7FAF2] shadow-[0_2px_20px_rgba(0,0,0,0.08)]'
           : 'bg-transparent'
       }`}
@@ -49,12 +56,12 @@ export default function Navbar() {
             width={84}
             height={84}
             className={`object-contain transition-all duration-300 ${
-              scrolled
+              solid
                 ? ''
                 : '[filter:drop-shadow(0_3px_12px_rgba(0,0,0,0.6))_drop-shadow(0_0_4px_rgba(0,0,0,0.4))]'
             }`}
           />
-          {scrolled && (
+          {solid && (
             <span className="font-serif text-lg text-forest/75 leading-tight hidden sm:block tracking-wider">
               Organics
             </span>
@@ -68,7 +75,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               className={`relative text-[15px] font-medium tracking-wide transition-colors duration-200 group ${
-                scrolled
+                solid
                   ? 'text-forest/75 hover:text-leaf'
                   : 'text-white/85 hover:text-white'
               }`}
@@ -76,7 +83,7 @@ export default function Navbar() {
               {l.label}
               {/* Underline hover accent */}
               <span className={`absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300 ${
-                scrolled ? 'bg-leaf' : 'bg-lime/70'
+                solid ? 'bg-leaf' : 'bg-lime/70'
               }`} />
             </Link>
           ))}
@@ -88,7 +95,7 @@ export default function Navbar() {
           <button
             onClick={toggle}
             className={`text-sm font-semibold px-4 py-1.5 rounded-full border transition-all duration-300 tracking-wide ${
-              scrolled
+              solid
                 ? 'border-forest/35 text-forest hover:border-forest hover:bg-forest/5'
                 : 'border-white/50 text-white hover:border-white hover:bg-white/10'
             }`}
@@ -101,7 +108,7 @@ export default function Navbar() {
           <Link
             href="/cart"
             className={`relative p-2 rounded-full transition-all duration-300 ${
-              scrolled
+              solid
                 ? 'text-forest hover:bg-forest/8'
                 : 'text-white hover:bg-white/10'
             }`}
@@ -117,7 +124,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             className={`lg:hidden p-2 rounded-full transition-all duration-300 ${
-              scrolled ? 'text-forest hover:bg-forest/8' : 'text-white hover:bg-white/10'
+              solid ? 'text-forest hover:bg-forest/8' : 'text-white hover:bg-white/10'
             }`}
             onClick={() => setOpen(!open)}
           >
